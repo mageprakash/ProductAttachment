@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<!--
+  ~ @author MagePrakash Team
+  ~ @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+  ~ @package MagePrakash_ProductAttachment
+  -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="mageprakash_productattachment_icon_edit"/>
+</page>

@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<!--
+  ~ @author MagePrakash Team
+  ~ @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+  ~ @package MagePrakash_ProductAttachment
+  -->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+<!-- 	<route method="GET" url="/V1/guest-attachments/:productId">
+		<service class="MagePrakash\ProductAttachment\Api\AttachmentRepositoryInterface" method="getGuestAttachmentsByProductId"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+
+ -->	
+	<route method="GET" url="/V1/attachments/product/:productId/customer-group-id/:customerGroupId/store-id/:storeId">
+		<service class="MagePrakash\ProductAttachment\Api\AttachmentRepositoryInterface" method="getAttachmentsByProductId"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route method="GET" url="/V1/product/attachment/:attachmentId">
+		<service class="MagePrakash\ProductAttachment\Api\AttachmentRepositoryInterface" method="getById"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route method="DELETE" url="/V1/product/attachment/:attachmentId">
+		<service class="MagePrakash\ProductAttachment\Api\AttachmentRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+</routes>

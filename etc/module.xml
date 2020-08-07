@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<!--
+  ~ @author MagePrakash Team
+  ~ @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+  ~ @package MagePrakash_ProductAttachment
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+	<module name="MagePrakash_ProductAttachment" setup_version="1.0.0"/>
+</config>

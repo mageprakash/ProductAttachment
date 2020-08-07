@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<!--
+  ~ @author MagePrakash Team
+  ~ @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+  ~ @package MagePrakash_ProductAttachment
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+	<router id="admin">
+		<route frontName="mageprakash_productattachment" id="mageprakash_productattachment">
+			<module before="Magento_Backend" name="MagePrakash_ProductAttachment"/>
+		</route>
+	</router>
+</config>

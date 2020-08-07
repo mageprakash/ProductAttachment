@@ -1,0 +1,350 @@
+<!--
+  ~ @author MagePrakash Team
+  ~ @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+  ~ @package MagePrakash_ProductAttachment
+  -->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="productbase">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">MagePrakash Product Base Attachments</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+                <item name="sortOrder" xsi:type="string">899</item>
+            </item>
+        </argument>
+
+        <container name="buttons">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="boolean">false</item>
+                    <item name="formElement" xsi:type="string">container</item>
+                    <item name="componentType" xsi:type="string">container</item>
+                    <item name="sortOrder" xsi:type="string">1000</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+                    <item name="title" xsi:type="string" translate="true">Add Existing Attachments</item>
+                    <item name="actions" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="targetName" xsi:type="string">product_form.product_form.productbase.modal</item>
+                            <item name="actionName" xsi:type="string">toggleModal</item>
+                        </item>
+                        <item name="1" xsi:type="array">
+                            <item name="targetName" xsi:type="string">index = productattachments_grid</item>
+                            <item name="actionName" xsi:type="string">render</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </container>
+        
+        <button name="add_new_attachment" component="Magento_Ui/js/form/components/button">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="formElement" xsi:type="string">container</item>
+                    <item name="buttonClasses" xsi:type="string">add-new-attachment-button</item>
+                    <item name="actions" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="targetName" xsi:type="string">${ $.parentName}.add_new_attachment_modal.mageprakash_productattachment_form_loader</item>
+                            <item name="actionName" xsi:type="string">destroyInserted</item>
+                        </item>
+                        <item name="1" xsi:type="array">
+                            <item name="targetName" xsi:type="string">${ $.parentName}.add_new_attachment_modal</item>
+                            <item name="actionName" xsi:type="string">openModal</item>
+                        </item>
+                        <item name="2" xsi:type="array">
+                            <item name="targetName" xsi:type="string">${ $.parentName}.add_new_attachment_modal.mageprakash_productattachment_form_loader</item>
+                            <item name="actionName" xsi:type="string">render</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <title translate="true">Add New Attachment</title>
+            </settings>
+        </button>
+
+        <container name="productattachments">
+           <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">admin__field-wide mageprakash-file-rows mageprakash-dynamic-rows</item>
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="component" xsi:type="string">MagePrakash_ProductAttachment/js/dynamic-rows/dynamic-rows-grid</item>
+                    <item name="template" xsi:type="string">ui/dynamic-rows/templates/grid</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="addButton" xsi:type="boolean">false</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="columnsHeaderAfterRender" xsi:type="boolean">true</item>
+                    <item name="renderDefaultRecord" xsi:type="boolean">false</item>
+                    <item name="deleteButtonLabel" xsi:type="string" translate="true">Remove</item>
+                    <item name="dataScope" xsi:type="string">data.productbase</item>
+                    <item name="identificationProperty" xsi:type="string">attachment_id</item>
+                    <item name="identificationDRProperty" xsi:type="string">attachment_id</item>
+                    <item name="dataProvider" xsi:type="string">data.productattachments</item>
+                    <item name="map" xsi:type="array">
+                        <item name="attachment_id" xsi:type="string">attachment_id</item>
+                        <item name="filename" xsi:type="string">filename</item>
+                        <item name="is_enable" xsi:type="string">is_enable</item>
+                        <item name="icon_image" xsi:type="string">icon_image_src</item>
+                    </item>
+                    <item name="links" xsi:type="array">
+                        <item name="insertData" xsi:type="string">${ $.provider }:${ $.dataProvider }</item>
+                    </item>
+                    <item name="dndConfig" xsi:type="array">
+                        <item name="enabled" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+       			 <field name="attachment_id">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataScope" xsi:type="string">attachment_id</item>
+                            <item name="label" xsi:type="string" translate="true">Attachment Id</item>
+                            <item name="sortOrder" xsi:type="string">20</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+                    </argument>
+                 </field>
+                 <field name="filename">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataScope" xsi:type="string">filename</item>
+                            <item name="label" xsi:type="string" translate="true">Filename</item>
+                            <item name="sortOrder" xsi:type="string">25</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+                    </argument>
+                 </field>
+                <field name="icon_image">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/thumbnail</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="dataScope" xsi:type="string">icon_image</item>
+                            <item name="label" xsi:type="string" translate="true">Icon</item>
+                            <item name="sortOrder" xsi:type="string">30</item>
+                        </item>
+                    </argument>
+                </field>
+                <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="component" xsi:type="string">MagePrakash_ProductAttachment/js/dynamic-rows/element/delete-action</item>
+                            <item name="template" xsi:type="string">MagePrakash_ProductAttachment/dynamic-rows/cells/delete-action</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="label" xsi:type="string" translate="true">Actions</item>
+                            <item name="sortOrder" xsi:type="string">99</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </container>
+        <container name="modal">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentType" xsi:type="string">modal</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/modal/modal-component</item>
+                    <item name="options" xsi:type="array">
+                        <item name="type" xsi:type="string">slide</item>
+                        <item name="title" xsi:type="string" translate="true">Add Attachments</item>
+                        <item name="buttons" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="text" xsi:type="string" translate="true">Cancel</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="string">closeModal</item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="text" xsi:type="string" translate="true">Add Selected Attachments</item>
+                                <item name="class" xsi:type="string">action-primary</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="targetName" xsi:type="string">index = productattachments_grid</item>
+                                        <item name="actionName" xsi:type="string">save</item>
+                                    </item>
+                                    <item name="1" xsi:type="string">closeModal</item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+            <insertListing name="productattachments_grid">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="cssclass" xsi:type="string">productattachments-grid-insert-listing</item>
+                        <item name="dataScope" xsi:type="string">data.productattachments</item>
+                        <item name="autoRender" xsi:type="boolean">false</item>
+                        <item name="selectionsProvider" xsi:type="string">mageprakash_productattachment_attachment_insert_listing.mageprakash_productattachment_attachment_insert_listing.mageprakash_attachment_columns.ids</item>
+                        <item name="externalProvider" xsi:type="string">mageprakash_productattachment_attachment_insert_listing.mageprakash_productattachment_attachment_insert_listing_data_source</item>
+                        <item name="ns" xsi:type="string">mageprakash_productattachment_attachment_insert_listing</item>
+                        <item name="realTimeLink" xsi:type="boolean">true</item>
+                        <item name="behaviourType" xsi:type="string">simple</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="storeId" xsi:type="string">${ $.provider }:data.product.current_store_id</item>
+                        </item>
+                        <item name="exports" xsi:type="array">
+                            <item name="storeId" xsi:type="string">${ $.externalProvider }:params.store_id</item>
+                        </item>
+                        <item name="dataLinks" xsi:type="array">
+                            <item name="imports" xsi:type="boolean">false</item>
+                            <item name="exports" xsi:type="boolean">true</item>
+                        </item>
+                        <item name="externalFilterMode" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+            </insertListing>
+        </container>
+
+        <modal name="add_new_attachment_modal">
+            <settings>
+                <options>
+                    <option name="title" xsi:type="string">Add New Attachment</option>
+                </options>
+            </settings>
+            <insertForm name="mageprakash_productattachment_form_loader" component="MagePrakash_ProductAttachment/js/form/components/insert-form">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="attachmentListingProvider" xsi:type="string">ns = productattachments_grid, index = productattachments_grid</item>
+                        <item name="attachmentModalProvider" xsi:type="string">${ $.parentName }</item>
+                    </item>
+                </argument>
+                <settings>
+                    <formSubmitType>ajax</formSubmitType>
+                    <renderUrl path="mui/index/render_handle">
+                        <param name="handle">catalog_product_attachment</param>
+                        <param name="buttons">1</param>
+                    </renderUrl>
+                    <loading>false</loading>
+                    <toolbarContainer>${ $.parentName }</toolbarContainer>
+                    <externalProvider>${ $.ns }.mageprakash_productattachment_form_data_source</externalProvider>
+                    <ns>mageprakash_attachment_form</ns>
+                </settings>
+            </insertForm>
+        </modal>
+    </fieldset>
+    <fieldset name="conditionbase">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">MagePrakash Condition Base Attachments</item>
+                <item name="additionalClasses" xsi:type="string">admin__fieldset-section</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+                <item name="sortOrder" xsi:type="string">900</item>
+            </item>
+        </argument>
+        <container name="conditionbaseattachments">
+           <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">admin__field-wide mageprakash-file-rows mageprakash-dynamic-rows</item>
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="component" xsi:type="string">MagePrakash_ProductAttachment/js/dynamic-rows/dynamic-rows-grid</item>
+                    <item name="template" xsi:type="string">ui/dynamic-rows/templates/grid</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="addButton" xsi:type="boolean">false</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="columnsHeaderAfterRender" xsi:type="boolean">true</item>
+                    <item name="renderDefaultRecord" xsi:type="boolean">false</item>
+                    <item name="deleteButtonLabel" xsi:type="string" translate="true">Remove</item>
+                    <item name="dataScope" xsi:type="string">data.conditionbase</item>
+                    <item name="identificationProperty" xsi:type="string">attachment_id</item>
+                    <item name="identificationDRProperty" xsi:type="string">attachment_id</item>
+                    <item name="dataProvider" xsi:type="string">data.conditionbaseattachments</item>
+                    <item name="map" xsi:type="array">
+                        <item name="attachment_id" xsi:type="string">attachment_id</item>
+                        <item name="filename" xsi:type="string">filename</item>
+                        <item name="is_enable" xsi:type="string">is_enable</item>
+                        <item name="icon_image" xsi:type="string">icon_image_src</item>
+                    </item>
+                    <item name="links" xsi:type="array">
+                        <item name="insertData" xsi:type="string">${ $.provider }:${ $.dataProvider }</item>
+                    </item>
+                    <item name="dndConfig" xsi:type="array">
+                        <item name="enabled" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+                 <field name="attachment_id">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataScope" xsi:type="string">attachment_id</item>
+                            <item name="label" xsi:type="string" translate="true">Attachment Id</item>
+                            <item name="sortOrder" xsi:type="string">20</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+                    </argument>
+                 </field>
+                 <field name="filename">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataScope" xsi:type="string">filename</item>
+                            <item name="label" xsi:type="string" translate="true">Filename</item>
+                            <item name="sortOrder" xsi:type="string">25</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+                    </argument>
+                 </field>
+                <field name="icon_image">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/thumbnail</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="dataScope" xsi:type="string">icon_image</item>
+                            <item name="label" xsi:type="string" translate="true">Icon</item>
+                            <item name="sortOrder" xsi:type="string">30</item>
+                        </item>
+                    </argument>
+                </field>
+                
+            </container>
+        </container>
+    </fieldset>
+</form>

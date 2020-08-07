@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!--
+  ~ @author MagePrakash Team
+  ~ @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+  ~ @package MagePrakash_ProductAttachment
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="MagePrakash\ProductAttachment\Api\AttachmentRepositoryInterface" type="MagePrakash\ProductAttachment\Model\AttachmentRepository"/>
+	<preference for="MagePrakash\ProductAttachment\Api\Data\AttachmentInterface" type="MagePrakash\ProductAttachment\Model\Data\Attachment"/>
+	<preference for="MagePrakash\ProductAttachment\Api\Data\AttachmentItemsInterface" type="MagePrakash\ProductAttachment\Model\Data\AttachmentItems"/>
+	<preference for="MagePrakash\ProductAttachment\Api\Data\AttachmentSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="mageprakash_productattachment_attachment_listing_data_source" xsi:type="string">MagePrakash\ProductAttachment\Model\ResourceModel\Attachment\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+	<preference for="MagePrakash\ProductAttachment\Api\ProductRepositoryInterface" type="MagePrakash\ProductAttachment\Model\ProductRepository"/>
+	<preference for="MagePrakash\ProductAttachment\Api\Data\ProductInterface" type="MagePrakash\ProductAttachment\Model\Data\Product"/>
+	<preference for="MagePrakash\ProductAttachment\Api\Data\ProductSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+
+	<preference for="MagePrakash\ProductAttachment\Api\IconRepositoryInterface" type="MagePrakash\ProductAttachment\Model\IconRepository"/>
+	<preference for="MagePrakash\ProductAttachment\Api\Data\IconInterface" type="MagePrakash\ProductAttachment\Model\Data\Icon"/>
+	<preference for="MagePrakash\ProductAttachment\Api\Data\IconSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="MagePrakash\ProductAttachment\Model\ResourceModel\Icon\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">mageprakash_productattachment_icon</argument>
+			<argument name="resourceModel" xsi:type="string">MagePrakash\ProductAttachment\Model\ResourceModel\Icon\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="mageprakash_productattachment_icon_listing_data_source" xsi:type="string">MagePrakash\ProductAttachment\Model\ResourceModel\Icon\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+	<type name="MagePrakash\ProductAttachment\Model\Attachment">
+		<plugin name="reindex_ruleid_products" type="MagePrakash\ProductAttachment\Plugin\Indexer\ReindexRuleIdProducts" sortOrder="1" />
+	</type>
+	<preference for="MagePrakash\ProductAttachment\Api\AttachmentRuleIdxRepositoryInterface" type="MagePrakash\ProductAttachment\Model\AttachmentRuleIdxRepository"/>
+	<preference for="MagePrakash\ProductAttachment\Api\Data\AttachmentRuleIdxInterface" type="MagePrakash\ProductAttachment\Model\Data\AttachmentRuleIdx"/>
+	<preference for="MagePrakash\ProductAttachment\Api\Data\AttachmentRuleIdxSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+</config>

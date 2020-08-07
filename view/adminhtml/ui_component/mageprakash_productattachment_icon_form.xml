@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+<!--
+  ~ @author MagePrakash Team
+  ~ @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+  ~ @package MagePrakash_ProductAttachment
+  -->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">mageprakash_productattachment_icon_form.icon_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button class="MagePrakash\ProductAttachment\Block\Adminhtml\Icon\Edit\BackButton" name="back"/>
+			<button class="MagePrakash\ProductAttachment\Block\Adminhtml\Icon\Edit\DeleteButton" name="delete"/>
+			<button class="MagePrakash\ProductAttachment\Block\Adminhtml\Icon\Edit\SaveButton" name="save"/>
+			<button class="MagePrakash\ProductAttachment\Block\Adminhtml\Icon\Edit\SaveAndContinueButton" name="save_and_continue"/>
+		</buttons>
+		<namespace>mageprakash_productattachment_icon_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>mageprakash_productattachment_icon_form.icon_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="icon_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider class="MagePrakash\ProductAttachment\Model\Icon\DataProvider" name="icon_form_data_source">
+			<settings>
+				<requestFieldName>icon_id</requestFieldName>
+				<primaryFieldName>icon_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label/>
+		</settings>
+
+		<field name="image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Upload Icon</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">MagePrakash_ProductAttachment/form/element/uploader/icon-image-preview</item>                    
+                    <item name="source" xsi:type="string">image</item>
+                    <item name="sortOrder" xsi:type="string">11</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="mageprakash_productattachment/icon/upload"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+		<field name="is_active">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="source" xsi:type="string">is_active</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="default" xsi:type="number">1</item>
+                    <item name="sortOrder" xsi:type="string">10</item>
+                </item>
+            </argument>
+        </field>
+        <field formElement="input" name="icon_extension" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">icon_extension</item>
+                        <item name="sortOrder" xsi:type="string">50</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Icon Extension</label>
+                <dataScope>icon_extension</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+	</fieldset>
+</form>

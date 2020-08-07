@@ -1,0 +1,59 @@
+/*
+ * @author MagePrakash Team
+ * @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+ * @package MagePrakash_ProductAttachment
+ */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+	.attachments-wrapper {
+		table {
+			width: auto;
+			.col {
+				&.center {
+					text-align: center;
+				}
+			}
+			thead,
+			tbody {
+				.col {
+					padding-right: 20px;
+					padding-left: 20px;
+				}
+			}
+			tbody {
+				.col {
+					vertical-align: middle;					
+					&.icon {
+						img {
+							max-width: 40px;
+							height: auto;
+						}
+					}
+					&.download {
+						img {
+							width: 22px;
+						}
+					}
+				}
+			}			
+		}
+	}
+}
+
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {}
+
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {}

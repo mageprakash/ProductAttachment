@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!--
+  ~ @author MagePrakash Team
+  ~ @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+  ~ @package MagePrakash_ProductAttachment
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+			   <resource id="MagePrakash_ProductAttachment::icon" sortOrder="10" title="icon">
+					<resource id="MagePrakash_ProductAttachment::icon_save" sortOrder="10" title="Save icon"/>
+					<resource id="MagePrakash_ProductAttachment::icon_delete" sortOrder="20" title="Delete icon"/>
+					<resource id="MagePrakash_ProductAttachment::icon_update" sortOrder="30" title="Update icon"/>
+					<resource id="MagePrakash_ProductAttachment::icon_view" sortOrder="40" title="View icon"/>
+				</resource>
+
+				<resource id="MagePrakash_ProductAttachment::attachment" sortOrder="10" title="attachment">
+					<resource id="MagePrakash_ProductAttachment::attachment_save" sortOrder="10" title="Save attachment"/>
+					<resource id="MagePrakash_ProductAttachment::attachment_delete" sortOrder="20" title="Delete attachment"/>
+					<resource id="MagePrakash_ProductAttachment::attachment_update" sortOrder="30" title="Update attachment"/>
+					<resource id="MagePrakash_ProductAttachment::attachment_view" sortOrder="40" title="View attachment"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

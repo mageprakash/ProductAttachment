@@ -1,0 +1,28 @@
+{
+    "name": "mageprakash/module-productattachment",
+    "description": "Product Attachment Magento 2 extension",
+    "homepage": "https://github.com/MagePrakash/ProductAttachment",
+    "type": "magento2-module",
+    "version": "1.1.0",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+          "name": "MagePrakash",
+          "email": "mage4pixel@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/MagePrakash/ProductAttachment"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "MagePrakash\\ProductAttachment\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

@@ -1,0 +1,46 @@
+<?php
+/**
+ * @author MagePrakash Team
+ * @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+ * @package MagePrakash_ProductAttachment
+ */
+
+namespace MagePrakash\ProductAttachment\Block\Adminhtml\Attachment\Edit;
+
+use Magento\Backend\Block\Widget\Context;
+
+abstract class GenericButton
+{
+
+    protected $context;
+
+    /**
+     * @param \Magento\Backend\Block\Widget\Context $context
+     */
+    public function __construct(Context $context)
+    {
+        $this->context = $context;
+    }
+
+    /**
+     * Return model ID
+     *
+     * @return int|null
+     */
+    public function getModelId()
+    {
+        return $this->context->getRequest()->getParam('attachment_id');
+    }
+
+    /**
+     * Generate url by route and parameters
+     *
+     * @param   string $route
+     * @param   array $params
+     * @return  string
+     */
+    public function getUrl($route = '', $params = [])
+    {
+        return $this->context->getUrlBuilder()->getUrl($route, $params);
+    }
+}

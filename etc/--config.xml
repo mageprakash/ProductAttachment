@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+  ~ @author MagePrakash Team
+  ~ @copyright Copyright (c) 2020 MagePrakash (http://www.mageprakash.com/)
+  ~ @package MagePrakash_ProductAttachment
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <attachments>
+            <general>
+                <enabled>1</enabled>
+            </general>
+            <product_tab>
+                <product_tab_enabled>1</product_tab_enabled>
+                <product_tab_label>Product Attachments</product_tab_label>                
+            </product_tab>
+            <order_view>
+                <order_view_attachments_show>1</order_view_attachments_show>
+                <order_view_attachments_label>Product Attachments</order_view_attachments_label>
+            </order_view>
+            <order_email>
+                <show_attachments>1</show_attachments>
+                <email_attachments_label>Product Attachments</email_attachments_label>
+            </order_email>
+        </attachments>
+    </default>
+</config>

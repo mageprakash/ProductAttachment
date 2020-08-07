@@ -1,0 +1,43 @@
+<div class="widget attachments-widget">
+<?php 
+	$attachmentsList = $block->getAttachments();
+?>
+	<div class="attachments-wrapper table-wrapper">
+		<table class="attachment items data table">
+			<thead>
+                <tr>                	
+                    <th class="col icon"><span>Icon</span></th>                    
+                    <th class="col label"><span>Label</span></th>
+                    <th class="col type"><span>Type</span></th>
+                    <th class="col size"><span>Size</span></th>
+                    <th class="col download center"><span>Download</span></th>
+                </tr>
+            </thead>
+            <tbody>            	
+				<?php foreach ($attachmentsList->getItems() as $value): ?>
+					<tr>
+						<?php if($value->getIconImage()): ?>
+							<td class="col icon">
+								<img src="<?= $value->getIconImage() ?>" class="fileicon">
+							</td>
+						<?php endif;?>
+						<td class="col label">
+							<span><?= $value->getFilename()?></span>
+						</td>
+						<td class="col type">
+							<span><?= $value->getType() ?></span>
+						</td>
+						<td class="col size">
+							<span><?= $block->convertToReadableSize($value->getSize()) ?></span>							
+						</td>
+						<td class="col download center">
+							<a href="<?= $block->getUrl('attachment/attachment/download',['attachment_id'=>$value->getAttachmentId()]) ?>">
+								<img src="<?php echo $this->getViewFileUrl('MagePrakash_ProductAttachment/images/download-icon.svg'); ?>">
+							</a>							
+						</td>
+					</tr>
+				<?php endforeach;?>
+            </tbody>
+		</table>
+	</div>
+</div>
